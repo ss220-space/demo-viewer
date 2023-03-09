@@ -1,6 +1,6 @@
 const svgns = "http://www.w3.org/2000/svg";
 function maptext_to_svg(maptext:string, width:number, height:number) {
-	maptext = `<style>.center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .command_headset { font-weight: bold;\tfont-size: 8px; } .small { font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .greentext { color: #00FF00; font-size: 7px; } .redtext { color: #FF0000; font-size: 7px; } .clown { color: #FF69Bf; font-size: 7px;  font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6px; }</style>` + maptext;
+	maptext = `<style>.center { text-align: center; } .maptext { font-family: 'MS Serif'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .command_headset { font-weight: bold;\tfont-size: 8px; } .small { font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .greentext { color: #00FF00; font-size: 7px; } .redtext { color: #FF0000; font-size: 7px; } .clown { color: #FF69Bf; font-size: 7px;  font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6px; }</style>` + maptext;
 
 	let parsed = new DOMParser().parseFromString(maptext, "text/html");
 
@@ -27,7 +27,7 @@ function maptext_to_svg(maptext:string, width:number, height:number) {
 		css = css.replace(/font-size: *([0-9]+)pt;/g, (_, size) => {
 			return `font-size: ${Math.ceil(size*4/3)}px;`;
 		});
-		css = css.replace(/font(?:-family)?: *['"]Small Fonts['"];/g, `font-family:"Small Fonts", "ＭＳ Ｐゴシック", "MS Sans Serif", sans-serif;`);
+		css = css.replace(/font(?:-family)?: *['"]MS Serif['"];/g, `font-family:"MS Serif", "ＭＳ Ｐゴシック", "MS Sans Serif", sans-serif;`);
 		css = css.replace(/(text-align: [^;]+);/g, "$1; display: block;")
 		return css;
 	}
