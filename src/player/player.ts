@@ -187,7 +187,7 @@ export class DemoPlayer {
 				}
 
 				if(typeof ref == "string") {
-					view_dist_x = 9.5;
+					view_dist_x = 7.5;
 					view_dist_y = 7.5;
 					view_origin = atom.loc;
 				}
