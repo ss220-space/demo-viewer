@@ -30,8 +30,8 @@ export class DemoParserInterface {
 	public rev_data = create_exposed_promise<RevData>();
 	public chat_css = this.rev_data.then(async commit => {
 		let css_paths : (string|string[])[] = [
-			"tgui/packages/tgui-panel/styles/goon/chat-dark.scss",
-			"code/modules/goonchat/browserassets/css/browserOutput.css",
+			"goon/browserassets/css/browserOutput-dark.css",
+			"goon/browserassets/css/browserOutput.css",
 		];
 		let chat_css = "";
 		outer_loop: for(let path_list of css_paths) {
