@@ -85,57 +85,93 @@ export const enum AppearanceAttributeIndex{
 
 ///All relevant planes used by Yogstation categorized into an enum of their values
 export const enum Planes{
-    LOWEST_EVER_PLANE = -50,
-	
-	FIELD_OF_VISION_BLOCKER_PLANE = -45,
-    
-	CLICKCATCHER_PLANE = -40,
-	
-	PLANE_SPACE = -21,
+  LOWEST_EVER_PLANE = -50,
+
+	CLICKCATCHER_PLANE = -30,
+
+	PLANE_SPACE = -25,
 	PLANE_SPACE_PARALLAX = -20,
-	
-	GRAVITY_PULSE_PLANE = -12,
-	
-	RENDER_PLANE_TRANSPARENT = -11,
-	
-	TRANSPARENT_FLOOR_PLANE = -10,
-    
-	FLOOR_PLANE = -6,
-	WALL_PLANE = -5,
-	GAME_PLANE = -4,
-	ABOVE_GAME_PLANE = -3,
-	
-	SEETHROUGH_PLANE = -2,
+
+	RENDER_PLANE_TRANSPARENT = -11, //Transparent plane that shows openspace underneath the floor
+
+	FLOOR_PLANE = -10,
+
+	WALL_PLANE = -9,
+	GAME_PLANE = -8,
+
+	ABOVE_GAME_PLANE = -2,
+
 	RENDER_PLANE_GAME_WORLD = -1,
-	DEFAULT_PLANE = 0,
-	
+
+	DEFAULT_PLANE = 0, //Marks out the default plane, even if we don't use it
+
 	AREA_PLANE = 2,
 	MASSIVE_OBJ_PLANE = 3,
 	GHOST_PLANE = 4,
 	POINT_PLANE = 5,
-    
+
+//---------- LIGHTING -------------
+///Normal 1 per turf dynamic lighting underlays
 	LIGHTING_PLANE = 10,
+
+///Lighting objects that are "free floating"
 	O_LIGHTING_VISUAL_PLANE = 11,
-    EMISSIVE_PLANE = 13,
-	RENDER_PLANE_LIGHTING = 15,
-	LIGHT_MASK_PLANE = 16,
+
+///Used in camerachunks to keep some turfs hidden on photo
+	BYOND_LIGHTING_PLANE = 19,
+
+/// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
+	EMISSIVE_PLANE = 14,
+
+/// Masks the emissive plane
+	EMISSIVE_MASK_PLANE = 15,
+
+	RENDER_PLANE_LIGHTING = 16,
+
+///Things that should render ignoring lighting
 	ABOVE_LIGHTING_PLANE = 17,
+
+//---------------- MISC -----------------------
+
+///Pipecrawling images
 	PIPECRAWL_IMAGES_PLANE = 20,
-    CAMERA_STATIC_PLANE = 21,
+
+///AI Camera Static
+	CAMERA_STATIC_PLANE = 21,
+
+///Anything that wants to be part of the game plane, but also wants to draw above literally everything else
 	HIGH_GAME_PLANE = 22,
+
 	FULLSCREEN_PLANE = 23,
+
+//--------------- FULLSCREEN RUNECHAT BUBBLES ------------
+
+///Popup Chat Messages
 	RUNECHAT_PLANE = 30,
+/// Plane for balloon text (text that fades up)
 	BALLOON_CHAT_PLANE = 31,
-	HUD_PLANE = 35,
-	ABOVE_HUD_PLANE = 36,
-	SPLASHSCREEN_PLANE = 37,
-	RENDER_PLANE_GAME = 40,
-	RENDER_PLANE_GAME_MASKED = 41,
-	RENDER_PLANE_GAME_UNMASKED = 42,
-	RENDER_PLANE_NON_GAME = 45,
-	ESCAPE_MENU_PLANE = 46,
-	RENDER_PLANE_MASTER = 50,
-    HIGHEST_EVER_PLANE = RENDER_PLANE_MASTER,
+
+//-------------------- HUD ---------------------
+//HUD layer defines
+	HUD_PLANE = 40,
+	ABOVE_HUD_PLANE = 41,
+
+///Plane of the "splash" icon used that shows on the lobby screen. only render plate planes should be above this
+	SPLASHSCREEN_PLANE = 50,
+
+/// Buildmode HUD that in top-left corner
+	HUD_PLANE_BUILDMODE = 40,
+
+/// Debug View. This should always be on top. No exceptions.
+	HUD_PLANE_DEBUGVIEW = 50,
+
+	OPENSPACE_LAYER = 100, //Openspace layer over all
+//-------------------- Rendering ---------------------
+	RENDER_PLANE_GAME = 100,
+	RENDER_PLANE_NON_GAME = 101,
+	RENDER_PLANE_MASTER = 102,
+
+  HIGHEST_EVER_PLANE = RENDER_PLANE_MASTER,
 
 	EMISSIVE_Z_BELOW_LAYER = 1,
 	EMISSIVE_FLOOR_LAYER = 2,
