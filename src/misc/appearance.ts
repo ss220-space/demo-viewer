@@ -193,7 +193,7 @@ export namespace Appearance {
 		if(plane < Planes.LOWEST_EVER_PLANE || plane > Planes.HIGHEST_EVER_PLANE) {
 			plane = plane % (Planes.HIGHEST_EVER_PLANE - Planes.LOWEST_EVER_PLANE);
 		}
-		return (plane >= Planes.LIGHTING_PLANE && plane <= Planes.LIGHT_MASK_PLANE)
+		return (plane >= Planes.LIGHTING_PLANE && plane <= Planes.RENDER_PLANE_LIGHTING)
 	}
 
 	export function get_appearance_parts(appearance : Appearance) {
