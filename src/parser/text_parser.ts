@@ -4,7 +4,7 @@ import { DemoParser } from "./base_parser";
 import { BlendMode, Planes, SeeInvisibility } from "../misc/constants";
 
 const MIN_VERSION = 1;
-const MAX_VERSION = 1;
+const MAX_VERSION = 1.1;
 
 export class DemoParserText extends DemoParser {
 	private text_decoder = new TextDecoder();
@@ -66,7 +66,14 @@ export class DemoParserText extends DemoParser {
 
 		if(command == "commit") {
 			console.log("Commit " + content);
-			this.set_rev_data({commit: content, repo: "ss220-space/Paradise"});
+			const defaultRepo = "ss220-space/Paradise";
+			if (this.version >= 1.1) {
+				const repoCommitPattern = /([^@]+)@([a-f0-9]{40})/;
+				const [repo, commit] = repoCommitPattern.test(content) ? content.split("@") : [, content];
+				this.set_rev_data({commit: commit, repo: repo || defaultRepo});
+			} else {
+				this.set_rev_data({commit: content, repo: defaultRepo});
+			}
 		} else if(command == "init") {
 			[this.maxx,this.maxy,this.maxz] = content.split(" ").map(s=>parseInt(s));
 			this.resize(this.maxx,this.maxy,this.maxz);
