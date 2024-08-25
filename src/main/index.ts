@@ -53,7 +53,7 @@ let querystring = new URLSearchParams(window.location.search);
 if(querystring.has("demo_url")) {
 	_url = querystring.get("demo_url");
 } else if(querystring.has("roundid")) {
-	_url = `https://yogstation.net/rounds/${querystring.get("roundid")}/replay`;
+	_url = `https://logis-dev.ss220.space/in/logis/api/replay/ParadiseMain/${querystring.get("roundid")}`;
 }
 const url = _url;
 
